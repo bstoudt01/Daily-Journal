@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brett's Daily Journal</title>
+    <link rel="stylesheet" href="styles/journal.css">
+</head>
+
+<body>
+    <header><h1>Brett's Daily Jounal</h1></header>
+    <Div class="journal form div">
+        <form action="journal form">
+            <fieldset>
+                <label for="journalDate">Date of Entry</label>
+                <input type="date" name="journalDate" id="journalDate">
+            </fieldset>
+            <!-- short input field driver "concepts covered" of journal entry -->
+            <fieldset>
+                <label for="conceptsCovered">Concepts covered</label>
+                <input type="text" name="conceptsCovered" id="conceptsCovered">
+            </fieldset>
+            <!-- main entry area for journal entries -->
+            <fieldset>
+                <label for="journalEntry">The Gospel</label>
+                <textarea id="journalEntry" rows="2" cols="40" textarea placeholder="Ask yourself Questions & touch on all topics"></textarea>
+            </fieldset>
+            <!-- A slider to make note of your mood when creating entries -->
+            <fieldset>
+                <label for="journalMood">Rate Your Energy</label>
+                <select name="journalMood" id="journalMood">
+                    <option value="">Pick One</option>
+                    <option value="happy">Happy</option>
+                    <option value="sleepy">Sleepy</option>
+                    <option value="tired">Tired</option>
+                    <option value="lazzy">Lazzy</option>
+                    <option value="high">Workout High</option>
+                    <option value="potato">Couch Potato</option>
+                </select>
+            </fieldset>
+        </form>
+    </Div>
+    <button class="submit">Transfer Mental Image</button>
+
+</body>
+</html>
