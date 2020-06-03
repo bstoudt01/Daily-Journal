@@ -42,3 +42,7 @@ max-width: 30em;
     border-radius: 4px;
     color: whitesmoke;
     }
+
+.entryLog__date {
+    background-color: #5d5c61;
+}
