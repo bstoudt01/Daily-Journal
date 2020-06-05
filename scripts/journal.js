@@ -1,25 +1,25 @@
-var journalEntries = [
-    {
-        date: "6.1.20",
-        title: "jscript",
-        entry: "we jumped into javascript today and Steve walked us through creating modular javascrip components",
-        mood: "potato"
-    },
+// var journalEntries = [
+//     {
+//         date: "6.1.20",
+//         title: "jscript",
+//         entry: "we jumped into javascript today and Steve walked us through creating modular javascrip components",
+//         mood: "potato"
+//     },
      
-    {
-        date: "6.2.20",
-        title: "more and more jscript",
-        entry: "we jumped into javascript today and Steve walked us through creating modular javascrip components",
-        mood: "heady"
-    },
+//     {
+//         date: "6.2.20",
+//         title: "more and more jscript",
+//         entry: "we jumped into javascript today and Steve walked us through creating modular javascrip components",
+//         mood: "heady"
+//     },
     
-    {
-        date: "6.3.20",
-        title: "functions in functions",
-        entry: "we jumped into javascript today and Steve walked us through creating modular javascrip components",
-        mood: "heady"
-    }
-];
+//     {
+//         date: "6.3.20",
+//         title: "functions in functions",
+//         entry: "we jumped into javascript today and Steve walked us through creating modular javascrip components",
+//         mood: "heady"
+//     }
+// ];
 
 
 const journalEntryConverter = (journalEntry) => {
