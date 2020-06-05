@@ -1,4 +1,4 @@
-// var journalEntries = [
+let journalEntries = [
 //     {
 //         date: "6.1.20",
 //         title: "jscript",
@@ -19,8 +19,25 @@
 //         entry: "we jumped into javascript today and Steve walked us through creating modular javascrip components",
 //         mood: "heady"
 //     }
-// ];
+ ]
 
+const getJournalEntries = () => {
+    return fetch("http://localhost:3000/journalEntries").then(
+        (response) => {
+            return response.json()
+        }
+    ) 
+        .then(
+            (arrayOfEntries) => {
+                journalEntries = arrayOfEntries
+            }
+        )
+}
+getJournalEntries().then(
+	() => {
+		journalEntries
+	}
+)
 
 const journalEntryConverter = (journalEntry) => {
  const journalHTMLRepresentation = `<div class="journalEntryContainer">
