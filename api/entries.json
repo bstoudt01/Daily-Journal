@@ -1,4 +1,5 @@
-var journalEntries = [
+{
+"journalEntries": [
     {
         "date": "6.1.20",
         "title": "jscript",
@@ -20,3 +21,4 @@ var journalEntries = [
         "mood": "heady"
     }
 ]
+}
