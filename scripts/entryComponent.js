@@ -1,3 +1,5 @@
+
+
 const HTMLComponent = {
     journalEntryConverter (journalEntry) {
     const journalHTMLRepresentation = `<div class="journalEntryContainer">
@@ -11,3 +13,5 @@ const HTMLComponent = {
        return journalHTMLRepresentation
    }
 }
+
+export default HTMLComponent

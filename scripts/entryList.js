@@ -1,3 +1,5 @@
+//import HTMLComponent from "./entryComponent.js"
+import journalEntries from "./data.js"
 
    
 const Render = { 
@@ -10,3 +12,5 @@ const Render = {
     }
 }
 }
+
+export default Render

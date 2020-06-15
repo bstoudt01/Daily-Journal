@@ -1,5 +1,7 @@
+
 let journalEntries = []   
 //const api is an object, which can contain key value pairs of getJournalEntries:return.then.then
+
 const API = {
     getJournalEntries () {
         return fetch("http://localhost:8088/journalEntries")
@@ -11,6 +13,8 @@ const API = {
             )
     }
 }
+
+export {API, journalEntries}
 
 //because this is an object, it is able to house muiltipel methods(functions) which are related to this api...
 
