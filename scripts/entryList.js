@@ -1,12 +1,12 @@
-let journalEntries = []   
-   
-const showJournalEntries = () => {
-    const journalObjectsArray = journalEntries
 
+   
+const Render = { 
+    showJournalEntries () {
+    const journalObjectsArray = journalEntries
     for (const journalObject of journalObjectsArray){
-        const journalHTMLRepresentation = journalEntryConverter(journalObject)
+        const journalHTMLRepresentation = HTMLComponent.journalEntryConverter(journalObject)
         const journalArticleElement = document.querySelector(".entryLog")
         journalArticleElement.innerHTML += journalHTMLRepresentation
     }
-
+}
 }

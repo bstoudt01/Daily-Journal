@@ -1,4 +1,5 @@
-const journalEntryConverter = (journalEntry) => {
+const HTMLComponent = {
+    journalEntryConverter (journalEntry) {
     const journalHTMLRepresentation = `<div class="journalEntryContainer">
     <section class = "entryLog__date">Date: ${journalEntry.date}</section>
     <section class = "entryLog__title">Concepts Covered: ${journalEntry.title}</section>
@@ -9,4 +10,4 @@ const journalEntryConverter = (journalEntry) => {
        // Create your own HTML structure for a journal entry
        return journalHTMLRepresentation
    }
-   
+}
