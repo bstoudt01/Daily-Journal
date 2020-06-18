@@ -1,10 +1,10 @@
-//import HTMLComponent from "./entryComponent.js"
-import journalEntries from "./data.js"
+import HTMLComponent from "./entryComponent.js"
 
    
 const Render = { 
-    showJournalEntries () {
-    const journalObjectsArray = journalEntries
+    showJournalEntries (journalObjectsArray) {
+        console.log(journalObjectsArray)
+    // const journalObjectsArray = API.useJournalEntries()
     for (const journalObject of journalObjectsArray){
         const journalHTMLRepresentation = HTMLComponent.journalEntryConverter(journalObject)
         const journalArticleElement = document.querySelector(".entryLog")

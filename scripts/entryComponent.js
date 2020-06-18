@@ -1,4 +1,4 @@
-
+//import HTMLComponent from "./entryList.js"
 
 const HTMLComponent = {
     journalEntryConverter (journalEntry) {
