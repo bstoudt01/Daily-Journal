@@ -5,35 +5,47 @@ import newJournalEntryObject from "./createEntry.js";
 /*
     Main application logic that uses the functions and objects
     defined in the other JavaScript files.
-
-    Change the fake variable names below to what they should be
-    to get the data and display it.
 */
+//this invocation accesses the journal database and .then passes that response through a html generator (converters and places in html)
+//get fetch from json database
 API.getJournalEntries()
-    .then(response => Render.showJournalEntries(response))
+    .then(response => Render.showJournalEntries(response));
+//response is a taco paramater that is taking the data from getJournalEntries and storing it. 
+//render object with the method of showJournalEntries passes the response from the response function 
 
 //responsible for listening to a click the submit journal entry button to post the journal entry to the json database
 const journalSubmitButton = document.querySelector(".submitJournalButton")
 
 
 journalSubmitButton.addEventListener("click", (clickEvent) => {
+    const journalDate = document.getElementById("journalDate").value
+    const journalTitle = document.getElementById("journalTitle").value
+    const journalEntry = document.getElementById("journalEntry").value
+    const journalMood = document.getElementById("journalMood").value
    if ( 
-        (document.getElementById("journalDate").value === "") ||
+        (journalDate === "") ||
         //console.log(dateOfEntry)
-        (document.getElementById("journalTitle").value === "") ||
+        (journalTitle === "") ||
         //console.log(conceptsCovered)
-        (document.getElementById("journalEntry").value === "") ||
+        (journalEntry === "") ||
         //console.log(journalEntry)
-        (document.getElementById("journalMood").value === "")
+        (journalMood === "")
         // console.log(conceptsCovered) 
     ) 
    {alert ("you forgot something")}
-        //document.querySelector(".quotesList").classList.toggle("hidden")
+   else {
+        const journalEntrySubmit = newJournalEntryObject(journalDate, journalTitle, journalEntry, journalMood )
+        API.saveJournalEntry(journalEntrySubmit)   
+        console.log(journalEntrySubmit)
+    }
+        
 })
 
 
 
-newJournalEntryObject();
+
 //invoked the object containing a factory function whose responsibility is to generate an object that represents a journal entry.
 const firstEntry = newJournalEntryObject("2020/02/12", "abc", "123", "happy")
-console.log(firstEntry)
+//console.log(firstEntry)
+
+API.saveJournalEntry(firstEntry)

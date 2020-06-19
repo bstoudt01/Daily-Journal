@@ -1,11 +1,11 @@
-const newJournalEntryObject = (journalDate, journalTitle, journalEntries, journalMood) => {
-    let singleEntry = {
+const newJournalEntryObject = (journalDate, journalTitle, journalEntry, journalMood) => {
+    return {
         date: journalDate,
         title: journalTitle,
-        entries: journalEntries,
+        entry: journalEntry,
         mood: journalMood,
     };
-    return singleEntry;
+    //return singleEntry;
 };
 
 export default newJournalEntryObject;
