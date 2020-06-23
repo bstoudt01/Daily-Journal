@@ -19,18 +19,19 @@ API.getJournalEntries()
 //
 const journalLogContainer = document.querySelector(".entryLog")
 
-export default {
-registerListeners () {
+
+const registerListeners = () => {
     journalLogContainer.addEventListener("click", event => {
             //DELETE ENTRY BUTTON
+            event.preventDefault()
             if (event.target.id.startsWith("deleteEntry--")) {
                 // Extract UNIQUE entry id from the button's id attribute
                 const entryToDelete = event.target.id.split("--")[1]
 
-                // Invoke the delete method, then get all entries and render them
+                // Invoke the delete method, then get all entries without invoking and render the response
                 API.deleteJournalEntry(entryToDelete)
-                    .then(API.getJournalEntries())
-                    .then(() => Render.showJournalEntries())
+                    .then(API.getJournalEntries)
+                    .then((response) => Render.showJournalEntries(response))
             }
 
             //EDIT ENTRY BUTTON
@@ -48,9 +49,9 @@ registerListeners () {
 
         })
     }
-}
 
 
+registerListeners()
                     // EDIT JOURNAL ENTRIES
 
 //when invoked, this function resets the journal inputs, currently used in the saveJournalEditsButton.
@@ -131,10 +132,14 @@ saveJournalEditsButton.addEventListener("click", event => {
     }
 })
 
-// JOURNAL ENTRY FILTER BASED ON MOOD SELECTED IN THE MOOD FILTERS radio button form
-const radioButton = document.getElementsByName('mood')
-radioButton.forEach(button => {
-    if(button.value = journalMood) {
-        
-    }
-})
+//JOURNAL ENTRY FILTER BASED ON MOOD SELECTED IN THE MOOD FILTERS radio button form
+// const radioButton = document.querySelector('#mood')
+// console.log(radioButton)
+// radioButton.addEventListener("click", event => {
+//     const mood = event.target.value
+//     mood.forEach(if mood === )
+//     console.log(mood)
+//     if (mood === "Happy") {
+//         getJournalEntries.filter
+//     }
+// })
