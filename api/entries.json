@@ -1,53 +1,11 @@
 {
   "journalEntries": [
     {
-      "date": "0003-03-03",
-      "title": "3",
-      "entry": "2 fory and me and the save button works but....",
+      "date": "2020-06-17",
+      "title": "1234",
+      "entry": "1244",
       "mood": "happy",
-      "id": 14
-    },
-    {
-      "date": "0005-05-05",
-      "title": "4",
-      "entry": "4 or more and it saves but wont reload and send an errors",
-      "mood": "happy",
-      "id": 15
-    },
-    {
-      "date": "0007-07-07",
-      "title": "777",
-      "entry": "777 in heaven ",
-      "mood": "sleepy",
-      "id": 17
-    },
-    {
-      "date": "0002-02-22",
-      "title": "222",
-      "entry": "222 for you you you",
-      "mood": "happy",
-      "id": 18
-    },
-    {
-      "date": "0004-03-04",
-      "title": "444",
-      "entry": "4 no more more?",
-      "mood": "happy",
-      "id": 19
-    },
-    {
-      "date": "0001-01-01",
-      "title": "111",
-      "entry": "101010today it loads ist self",
-      "mood": "happy",
-      "id": 21
-    },
-    {
-      "date": "0011-11-11",
-      "title": "this works",
-      "entry": "lets see if all my buttons work\nedit? yes\ndelete?\nalerts? yes",
-      "mood": "happy",
-      "id": 24
+      "id": 1
     }
   ]
 }

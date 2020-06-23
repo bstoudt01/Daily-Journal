@@ -1,5 +1,5 @@
 import HTMLComponent from "./entryComponent.js"
-import registerListeners from "./journal.js"
+//import registerListeners from "./journal.js"... removed this from this module and invoked it in the journal.js...
    
 const Render = { 
     
@@ -13,7 +13,7 @@ const Render = {
         const journalArticleElement = document.querySelector(".entryLog")
         journalArticleElement.innerHTML += journalHTMLRepresentation
     }
-    registerListeners.registerListeners();
+    //registerListeners.registerListeners();
 
 }
 }
