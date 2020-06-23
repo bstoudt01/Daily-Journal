@@ -11,6 +11,7 @@
     <header><h1>Brett's Daily Jounal</h1></header>
     <Div class="journal form div">
         <form action="journal form">
+            <input type="hidden" id="journalId" value="" />
             <fieldset>
                 <label for="journalDate">Date of Entry</label>
                 <input type="date" name="journalDate" id="journalDate">
@@ -18,7 +19,7 @@
             <!-- short input field driver "concepts covered" of journal entry -->
             <fieldset>
                 <label for="conceptsCovered">Concepts covered</label>
-                <input type="text" name="conceptsCovered" id="conceptsCovered">
+                <input type="text" name="journalTitle" id="journalTitle">
             </fieldset>
             <!-- main entry area for journal entries -->
             <fieldset>
@@ -40,7 +41,7 @@
             </fieldset>
         </form>
     </Div>
-    <button class="submit">Transfer Mental Image</button>
+    <button class="saveJournalButton">Save Your Thoughts</button>
     
     <article class="entryLog">
         
