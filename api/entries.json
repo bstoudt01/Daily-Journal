@@ -1,11 +1,33 @@
 {
   "journalEntries": [
     {
-      "date": "2020-06-17",
-      "title": "1234",
-      "entry": "1244",
+      "date": "0003-03-03",
+      "title": "3",
+      "entry": "2 fory and me and the save button works but....",
       "mood": "happy",
       "id": 1
+    }
+  ],
+  "journalMoods": [
+    {
+      "id": 1,
+      "name": "happy"
+    },
+    {
+      "id": 2,
+      "name": "confident"
+    },
+    {
+      "id": 3,
+      "name": "confused"
+    },
+    {
+      "id": 4,
+      "name": "tired"
+    },
+    {
+      "id": 5,
+      "name": "pretzel"
     }
   ]
 }

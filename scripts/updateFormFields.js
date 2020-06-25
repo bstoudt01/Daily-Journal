@@ -1,12 +1,13 @@
+
 const updateFormFields = (entryObject) => {
-	// Get reference to input fields in the form
-	//declares variables to equal the data of an html element
+	
+	// variables set equal to the data of an html element, all of journal input elements (including the hidden id)
     const hiddenJournalId = document.querySelector("#journalId");
 	const journalDateInput = document.querySelector("#journalDate");
 	const journalTitleInput = document.querySelector("#journalTitle");
 	const journalEntryInput = document.querySelector("#journalEntry");
 	const journalMoodInput = document.querySelector("#journalMood");
-	// set the userinputed value of that html data equal to??? the properties on our form???? onto the DOM...
+	// sets the value of the journal input fields equal to the single "entryobject" being passed through, populating those fields with the properties in that object.
 	hiddenJournalId.value = entryObject.id;
 	journalDateInput.value = entryObject.date
 	journalTitleInput.value = entryObject.title;
