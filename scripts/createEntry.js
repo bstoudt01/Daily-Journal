@@ -1,3 +1,5 @@
+
+//journal entry object with paramaters set by key/value pairs that the same as our objects on the database.
 const newJournalEntryObject = (journalDate, journalTitle, journalEntry, journalMood) => {
     return {
         date: journalDate,
@@ -5,7 +7,6 @@ const newJournalEntryObject = (journalDate, journalTitle, journalEntry, journalM
         entry: journalEntry,
         mood: journalMood,
     };
-    //return singleEntry;
 };
 
 export default newJournalEntryObject;

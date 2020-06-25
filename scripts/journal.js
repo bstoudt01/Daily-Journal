@@ -4,22 +4,21 @@ import newJournalEntryObject from "./createEntry.js";
 import updateFormFields from "./updateFormFields.js";
 
 /*
-    Main application logic that uses the functions and objects
+    This Modules is the Main application logic that uses the functions and objects
     defined in the other JavaScript files.
 */
-//this invocation accesses the journal database and .then passes that response through a html generator (converters and places in html)
+
 //get fetch from json database
+//this invocation of API.getJournalEntries populates on the dom when loading the webpage
+// it accesses the journal database and .then passes that response through a html generator (converters and places in html)
 API.getJournalEntries()
    .then(response => Render.showJournalEntries(response));
-//response is a taco paramater that is taking the data from getJournalEntries and storing it. 
+//"response" is a "taco" paramater that is taking the data from getJournalEntries and storing it. 
 //render object with the method of showJournalEntries passes the response from the response function 
 
 // 
-            //EVENT LISTENER to Delete Journal Entry
-//
+            //EVENT LISTENER to Delete Journal Entry OR Edit Journal Entry
 const journalLogContainer = document.querySelector(".entryLog")
-
-
 const registerListeners = () => {
     journalLogContainer.addEventListener("click", event => {
             //DELETE ENTRY BUTTON
@@ -40,7 +39,7 @@ const registerListeners = () => {
                 //.split turns a strign into arrays at the chosen spot"--", and then you must specify which part of the array you want to return[1]
                 const entryToEdit = event.target.id.split("--")[1]
 
-                // Invoke the edit method, then get all entries and render them
+                // Invoke the edit method "get request" of a single journal entry
                 // grabs entry based on id declared in entryToEdit, .then takes that response "entryObject"
                 // and plugs that response in as a paramater to the updateFormFields function, which sets the database object property values equal to input fields
                 API.getSingleEntry(entryToEdit)
@@ -50,9 +49,11 @@ const registerListeners = () => {
         })
     }
 
-
+// EIDT AND DELETE BUTTON LISTENER IS INVOKED AND LISTENINGS
 registerListeners()
-                    // EDIT JOURNAL ENTRIES
+
+
+                    // EDIT JOURNAL ENTRIES (after edit button is clicked)
 
 //when invoked, this function resets the journal inputs, currently used in the saveJournalEditsButton.
 const clearInputs = () => {
@@ -67,39 +68,40 @@ const clearInputs = () => {
 //IF = SAVE EDIT AFTER a journal from the database was edited and is being resubmitted, has journal ID
 //ELSE = SAVE NEW JOURNAL, does NOT have journal ID
     //created hiddenEntryId variable to see if this is a new entry (no id) or a journal entry (has id) from the database that is being edited and resubmitted.
+    //created variables to hold the journal entry input values
 const saveJournalEditsButton = document.querySelector(".saveJournalButton")
 saveJournalEditsButton.addEventListener("click", event => {
     const hiddenEntryId = document.querySelector("#journalId");
+    const journalDate = document.getElementById("journalDate").value
+    const journalTitle = document.getElementById("journalTitle").value
+    const journalEntry = document.getElementById("journalEntry").value
+    const journalMood = document.getElementById("journalMood").value
 
+    //if #jouralId  "hiddenEntrtyId" has a value property not equal to empty (and it comes back true), this statement runs saving any entry that includes an id property while in the input forms
+//..the statement was created to run after we click the edit button, make changes to a journal entry from the database, and this statement saves the edit to the database with the save/submit button 
     if (hiddenEntryId.value !== "") {
-		const journalDateInput = document.querySelector("#journalDate").value;
-		const journalTitleInput = document.querySelector("#journalTitle").value;
-		const journalEntryInput = document.querySelector("#journalEntry").value;
-        const journalMoodInput = document.querySelector("#journalMood").value;
+
         //updateJournalEntry has 2 paramaters to pass through, 
-        //1st is the entry id and 2nd is our updated journal entry presented as our newJournalEntryObject with the required paramaters using the above variables assigned to the values of the input boxes
-        //(name, quantity, desc, shapeId, typeId, seasonId)
-        //after that updateJournalEntry has been put to the database then we return with an invokation of the getJournalEntries "get request"
+        //1st the entry id, the paramater is a variable set eqaul to #journalId looking and specifying to look at the ".value" of the html element
+        //2nd is our updated journal entry, presented as our newJournalEntryObject with the required paramaters using the above variables assigned to the values of the input boxes
+        //paramater order is (name, quantity, desc, shapeId, typeId, seasonId)
+        //after that updateJournalEntry has been "put request" to the database ".then" we return with an invokation of the getJournalEntries "get request"
         //then we take that response, clear our input fields, and return the render object with the showJournalEntries Method that is invoked with the response from our get request
-		API.updateJournalEntry(hiddenEntryId.value, newJournalEntryObject(journalDateInput, journalTitleInput, journalEntryInput, journalMoodInput))
+		API.updateJournalEntry(hiddenEntryId.value, newJournalEntryObject(journalDate, journalTitle, journalEntry, journalMood))
         .then(() => {
             return API.getJournalEntries()
         })
         .then((allObjectsFromAPI) => {
             clearInputs()   
-
             return Render.showJournalEntries(allObjectsFromAPI)
         })   
-       // console.log(journalEntrySubmit)
-        //IF it is TRUE, there is NO entry ID...
-        // NEW Journal Entry, we have a nested If else statement,
-            // IF  all fields are not populated give an alert 
-            // ELSE set a varaible equal to the our newjournalobject with the paramaters in the corresponding location for the arguments (properties) 
+        //IF hiddenEntryId.value is equal to nothing(and it comes back false), then this else statement is run and a new entry is created
+        // NEW Journal Entry, that includes have a nested If/else statement,
+            // IF  any fields is empty give an alert (true)
+            // ELSE (false, came back all field have data) 
+                //set a varaible equal to the our newjournalobject with the paramaters in the corresponding location for the arguments (properties) 
     } else {
-        const journalDate = document.getElementById("journalDate").value
-        const journalTitle = document.getElementById("journalTitle").value
-        const journalEntry = document.getElementById("journalEntry").value
-        const journalMood = document.getElementById("journalMood").value
+        
        if ( 
             (journalDate === "") ||
             //console.log(dateOfEntry)
@@ -112,10 +114,10 @@ saveJournalEditsButton.addEventListener("click", event => {
         ) 
        {alert ("you forgot something")}
        else {
-           // variable that is equal to the response of a function invoked with the paramaters captured from the form
+           // variable that is equal to the response of a function invoked with paramaters that are set to the value of the html input boxes
             const journalEntrySubmit = newJournalEntryObject(journalDate, journalTitle, journalEntry, journalMood )
-            //pass the new variable through the save "POST" fetch request 
-            //.then return with a get request
+            //pass the new variable through the save "POST request"
+            //.then return with a get request, which now includes the object submitted in the post request
             //.then take that response, clear the input fields, 
             //....and return the render object using the showJournalEntries method that is invoked with the getJournalEntries Response
             API.saveJournalEntry(journalEntrySubmit).then(() => {
@@ -133,13 +135,27 @@ saveJournalEditsButton.addEventListener("click", event => {
 })
 
 //JOURNAL ENTRY FILTER BASED ON MOOD SELECTED IN THE MOOD FILTERS radio button form
-// const radioButton = document.querySelector('#mood')
-// console.log(radioButton)
-// radioButton.addEventListener("click", event => {
-//     const mood = event.target.value
-//     mood.forEach(if mood === )
-//     console.log(mood)
-//     if (mood === "Happy") {
-//         getJournalEntries.filter
-//     }
-// })
+//declare the element we are looking at
+//forEach button inside the radiobutton element we invoke a click listener
+// declare the target value as a variable
+const radioButton = document.getElementsByName('mood') 
+console.log(radioButton)
+radioButton.forEach(moods => {
+    moods.addEventListener("click", event => {
+        const mood = event.target.value
+        console.log(mood)
+       
+// for the button clicked, take that button selection and "get request" our journal entries then take that response
+// .then take that response and filter it, and return that response as a filterEntry
+//to filter it declare a variable , set it equal to the response and add the object method of .filter ...
+//and place it into a function that returns when filtered.mood is equivilants to the target value
+// then pass it through our render method
+    API.getJournalEntries()
+     .then((response) => {
+         let filterEntry = response.filter(filtered => {
+             return filtered.mood === mood
+         })
+         Render.showJournalEntries(filterEntry)
+     })
+})
+})
