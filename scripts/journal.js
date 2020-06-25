@@ -135,6 +135,9 @@ saveJournalEditsButton.addEventListener("click", event => {
 })
 
 //JOURNAL ENTRY FILTER BASED ON MOOD SELECTED IN THE MOOD FILTERS radio button form
+//declare the element we are looking at
+//forEach button inside the radiobutton element we invoke a click listener
+// declare the target value as a variable
 const radioButton = document.getElementsByName('mood') 
 console.log(radioButton)
 radioButton.forEach(moods => {
@@ -142,7 +145,11 @@ radioButton.forEach(moods => {
         const mood = event.target.value
         console.log(mood)
        
-
+// for the button clicked, take that button selection and "get request" our journal entries then take that response
+// .then take that response and filter it, and return that response as a filterEntry
+//to filter it declare a variable , set it equal to the response and add the object method of .filter ...
+//and place it into a function that returns when filtered.mood is equivilants to the target value
+// then pass it through our render method
     API.getJournalEntries()
      .then((response) => {
          let filterEntry = response.filter(filtered => {
