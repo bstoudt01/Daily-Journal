@@ -9,6 +9,21 @@ header {
     color: whitesmoke;
 }
 /* submit button for journal entries */
+.filterBar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+
+    
+}
+.filterBar :first-child {
+    flex-basis: 40%;
+}
+.filterBar :last-child {
+    flex-basis: 40%;
+    width: 100%;
+}
+
 
 .journal form {
 border: 1px solid #7a4d1d;
@@ -46,3 +61,4 @@ max-width: 30em;
 .entryLog__date {
     background-color: #5d5c61;
 }
+

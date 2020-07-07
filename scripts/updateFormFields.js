@@ -12,7 +12,7 @@ const updateFormFields = (entryObject) => {
 	journalDateInput.value = entryObject.date
 	journalTitleInput.value = entryObject.title;
 	journalEntryInput.value = entryObject.entry;
-	journalMoodInput.value = entryObject.mood;
+	journalMoodInput.value = entryObject.journalMoodId;
 	
 }
 

@@ -5,7 +5,7 @@ const newJournalEntryObject = (journalDate, journalTitle, journalEntry, journalM
         date: journalDate,
         title: journalTitle,
         entry: journalEntry,
-        mood: journalMood,
+        journalMoodId: journalMood,
     };
 };
 

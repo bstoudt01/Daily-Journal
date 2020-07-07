@@ -2,32 +2,39 @@
   "journalEntries": [
     {
       "date": "0003-03-03",
-      "title": "3",
+      "title": "three for me",
       "entry": "2 fory and me and the save button works but....",
-      "mood": "happy",
+      "journalMoodId": "2",
+      "id": 1
+    },
+    {
+      "date": "1113-03-03",
+      "title": "Data Relationships",
+      "entry": "refactored database to have moods as a seperate table that can be called as a child using _expand",
+      "journalMoodId": 3,
       "id": 1
     }
   ],
   "journalMoods": [
     {
       "id": 1,
-      "name": "happy"
+      "mood": "Happy"
     },
     {
       "id": 2,
-      "name": "confident"
+      "mood": "Confident"
     },
     {
       "id": 3,
-      "name": "confused"
+      "mood": "Confused"
     },
     {
       "id": 4,
-      "name": "tired"
+      "mood": "Tired"
     },
     {
       "id": 5,
-      "name": "pretzel"
+      "mood": "Pretzel Head"
     }
   ]
 }

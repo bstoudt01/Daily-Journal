@@ -31,44 +31,55 @@
                 <label for="journalMood">Rate Your Energy</label>
                 <select name="journalMood" id="journalMood">
                     <option value="">Pick One</option>
-                    <option value="happy">Happy</option>
-                    <option value="sleepy">Sleepy</option>
-                    <option value="tired">Tired</option>
-                    <option value="lazzy">Lazzy</option>
-                    <option value="high">Workout High</option>
-                    <option value="potato">Couch Potato</option>
-                </select>
+                    <option value="1">Happy</option>
+                    <option value="2">Confident</option>
+                    <option value="3">Confused</option>
+                    <option value="4">Tired</option>
+                    <option value="5">Pretzle Head</option>
+                    </select>
             </fieldset>
         </form>
     </Div>
     <button class="saveJournalButton">Save Your Thoughts</button>
-    <form>
-        <fieldset name="mood" id="mood">
-            <legend>Please Select the Mood you would like to filter</legend>
-            <div>
-                <input type="radio" id="contactChoice1"
-                name="moodFilter" value="confident">
-                   <label for="moodChoice2">Confident</label>
+    <div class="filterBar">
+        <form>
+            <fieldset name="mood" id="mood">
+                <legend>Please Select the Mood you would like to filter</legend>
+                <div>
+                    <input type="radio" id="contactChoiceAll" name="moodFilter" value="0">
+                    <label for="moodChoice0">All</label>
+                    <input type="radio" id="contactChoice1"
+                    name="moodFilter" value="1">
+                    <label for="moodChoice1">Happy</label>
 
-                <input type="radio" id="contactChoice2"
-                 name="moodFilter" value="happy">
-                    <label for="moodChoice2">Happy</label>
-            
-                <input type="radio" id="contactChoice3"
-                name="moodFilter" value="confused">
-                    <label for="moodChoice3">Confused</label>
+                    <input type="radio" id="contactChoice2"
+                    name="moodFilter" value="2">
+                        <label for="moodChoice2">Confident</label>
+                
+                    <input type="radio" id="contactChoice3"
+                    name="moodFilter" value="3">
+                        <label for="moodChoice3">Confused</label>
 
-                    <input type="radio" id="contactChoice4"
-                name="moodFilter" value="tired">
-                    <label for="moodChoice4">Tired</label>
+                        <input type="radio" id="contactChoice4"
+                    name="moodFilter" value="4">
+                        <label for="moodChoice4">Tired</label>
 
-                <input type="radio" id="contactChoice5"
-                name="moodFilter" value="pretzel">
-                    <label for="moodChoice5">Pretzel Head</label>    
-            </div>
-        </fieldset>
-    </form>
-    
+                    <input type="radio" id="contactChoice5"
+                    name="moodFilter" value="5">
+                        <label for="moodChoice5">Pretzel Head</label>    
+                </div>
+            </fieldset>
+        </form>
+        <form >
+            <fieldset id="searchFilter" name="searchFilter">
+                <legend>Search Journal Entries</legend>
+                <div>
+                    <label for="journalSearch"></label>
+                    <input type="text" name="journalSearch" id="journalSearch">
+                </div>
+            </fieldset>
+        </form>
+    </div>
     <article class="entryLog">
         
     </article>

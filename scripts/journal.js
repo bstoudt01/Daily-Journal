@@ -21,8 +21,9 @@ API.getJournalEntries()
 const journalLogContainer = document.querySelector(".entryLog")
 const registerListeners = () => {
     journalLogContainer.addEventListener("click", event => {
+
             //DELETE ENTRY BUTTON
-            event.preventDefault()
+            
             if (event.target.id.startsWith("deleteEntry--")) {
                 // Extract UNIQUE entry id from the button's id attribute
                 const entryToDelete = event.target.id.split("--")[1]
@@ -64,7 +65,7 @@ const clearInputs = () => {
 	document.querySelector("#journalMood").value = "";
 }
 
-//Click Listener that waits for the save journal  button to be clicked 
+//Click Listener that waits for the save journal  button to be clicked FOR NEW ENTRIES AND EDITED ENTRIES
 //IF = SAVE EDIT AFTER a journal from the database was edited and is being resubmitted, has journal ID
 //ELSE = SAVE NEW JOURNAL, does NOT have journal ID
     //created hiddenEntryId variable to see if this is a new entry (no id) or a journal entry (has id) from the database that is being edited and resubmitted.
@@ -115,7 +116,7 @@ saveJournalEditsButton.addEventListener("click", event => {
        {alert ("you forgot something")}
        else {
            // variable that is equal to the response of a function invoked with paramaters that are set to the value of the html input boxes
-            const journalEntrySubmit = newJournalEntryObject(journalDate, journalTitle, journalEntry, journalMood )
+            const journalEntrySubmit = newJournalEntryObject(journalDate, journalTitle, journalEntry, journalMood)
             //pass the new variable through the save "POST request"
             //.then return with a get request, which now includes the object submitted in the post request
             //.then take that response, clear the input fields, 
@@ -134,28 +135,47 @@ saveJournalEditsButton.addEventListener("click", event => {
     }
 })
 
-//JOURNAL ENTRY FILTER BASED ON MOOD SELECTED IN THE MOOD FILTERS radio button form
-//declare the element we are looking at
+//JOURNAL ENTRY FILTER BASED ON MOOD SELECTED ON ELEMENTS WITH THE NAME=MOODFILTERS which are inside of a radio button form
+//RadioButton declares the elementS we are looking at by name of inputs we want to listen to
 //forEach button inside the radiobutton element we invoke a click listener
 // declare the target value as a variable
-const radioButton = document.getElementsByName('mood') 
-console.log(radioButton)
-radioButton.forEach(moods => {
+const moodRadioButtons = document.getElementsByName('moodFilter') 
+console.log(moodRadioButtons)
+moodRadioButtons.forEach(moods => {
     moods.addEventListener("click", event => {
-        const mood = event.target.value
+        let mood = event.target.value
         console.log(mood)
-       
-// for the button clicked, take that button selection and "get request" our journal entries then take that response
-// .then take that response and filter it, and return that response as a filterEntry
-//to filter it declare a variable , set it equal to the response and add the object method of .filter ...
-//and place it into a function that returns when filtered.mood is equivilants to the target value
-// then pass it through our render method
-    API.getJournalEntries()
-     .then((response) => {
-         let filterEntry = response.filter(filtered => {
-             return filtered.mood === mood
-         })
-         Render.showJournalEntries(filterEntry)
-     })
+        if (mood === "0") {
+            API.getJournalEntries()
+            .then(response => Render.showJournalEntries(response))
+        } else {
+            // then pass it through our render method
+            API.getJournalEntries() // for the button clicked, take that button selection and "get request" our journal entries then take that response
+            .then((response) => {  // .then take that response and filter it, and return that response as a filterEntry
+                let filterEntry = response.filter(filtered => { //to filter thhe response declare a variable , set it equal to the response and add the object method of .filter ...
+
+                    return filtered.journalMoodId === Number(mood) //and invoke that .filer with a function that returns when filtered.mood is equivilants to the target value "mood" as a number, not a string
+
+                })
+                Render.showJournalEntries(filterEntry)
+            })
+        }
+    })
 })
+
+//Search Bar
+
+const searchBarElement = document.querySelector("#journalSearch")
+searchBarElement.addEventListener("keypress", event => {
+    if (event.key === 'Enter') {
+        let searchTerms = event.target.value
+        console.log(searchTerms)
+        API.getAllJournalEntries()
+        .then((response) => {  
+            for (const searchTerms of Object.values(response)) {                   // .then take that response and filter it, and return that response as a filterEntry
+                console.log(searchTerms)
+            Render.showJournalEntries(searchTerms)
+            }
+        })
+    }
 })

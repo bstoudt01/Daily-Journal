@@ -12,7 +12,7 @@ const API = {
             // 2nd .then passes that response promise from our .json() method and returns it!
             // after these 2 .then functions, when this function is invoked it will needs to be iterated though another .then function that places the response promise in as a paramater for a function that renders all objects in the response to the dom (that dom response is held in the response variable on the left side of that function)
     getJournalEntries: () => {
-        return fetch(`${url}/journalEntries`)
+        return fetch(`${url}/journalEntries?_expand=journalMood`)
             .then(response => response.json()) //returns automatically since its on the same line without saying "return"
             .then(response => response) //returns automatically since its on 1 line
     },
@@ -48,11 +48,12 @@ const API = {
         	body: JSON.stringify(updatedEntryObj)
 		})
     },
-    //responbisble for fetching "get" the journal entries based on filter of mood input names
-    getjournalEntryMood: () => {
-        return fetch(`${url}/journalMoods`)
-		.then(response => response.json());
-    }
+    //get request without expand to trial with search bar.... code is breaking
+    getAllJournalEntries: () => {
+        return fetch(`${url}/journalEntries`)
+            .then(response => response.json()) //returns automatically since its on the same line without saying "return"
+            .then(response => response) //returns automatically since its on 1 line
+    },
 }
 
 
