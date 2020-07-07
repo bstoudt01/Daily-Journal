@@ -15,7 +15,8 @@ API.getJournalEntries()
    .then(response => Render.showJournalEntries(response));
 //"response" is a "taco" paramater that is taking the data from getJournalEntries and storing it. 
 //render object with the method of showJournalEntries passes the response from the response function 
-
+API.getJournalMoods()
+   .then(response => Render.showMoodsRadioButtons(response));
 // 
             //EVENT LISTENER to Delete Journal Entry OR Edit Journal Entry
 const journalLogContainer = document.querySelector(".entryLog")
@@ -154,7 +155,7 @@ moodRadioButtons.forEach(moods => {
             .then((response) => {  // .then take that response and filter it, and return that response as a filterEntry
                 let filterEntry = response.filter(filtered => { //to filter thhe response declare a variable , set it equal to the response and add the object method of .filter ...
 
-                    return filtered.journalMoodId === Number(mood) //and invoke that .filer with a function that returns when filtered.mood is equivilants to the target value "mood" as a number, not a string
+                    return filtered.journalMoodId === mood //and invoke that .filer with a function that returns when filtered.mood is equivilants to the target value "mood" as a number, not a string
 
                 })
                 Render.showJournalEntries(filterEntry)
@@ -164,18 +165,20 @@ moodRadioButtons.forEach(moods => {
 })
 
 //Search Bar
-
+// .then take that response and filter it, and return that response as a filterEntry
 const searchBarElement = document.querySelector("#journalSearch")
+API.getJournalEntries()
+.then((response) => {
 searchBarElement.addEventListener("keypress", event => {
     if (event.key === 'Enter') {
         let searchTerms = event.target.value
         console.log(searchTerms)
-        API.getAllJournalEntries()
-        .then((response) => {  
-            for (const searchTerms of Object.values(response)) {                   // .then take that response and filter it, and return that response as a filterEntry
+    
+       //currently loosing search Terms value in for of loop
+            for (searchTerms of Object.values(response)) {
                 console.log(searchTerms)
             Render.showJournalEntries(searchTerms)
-            }
+            }}
         })
-    }
+    
 })

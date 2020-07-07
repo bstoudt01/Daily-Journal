@@ -12,12 +12,24 @@ const Render = {
     showJournalEntries (journalObjectsArray) {
         console.log(journalObjectsArray)
         document.querySelector(".entryLog").innerHTML = ""
-    for (const journalObject of journalObjectsArray){
-        const journalHTMLRepresentation = HTMLComponent.journalEntryConverter(journalObject)
-        const journalArticleElement = document.querySelector(".entryLog")
-        journalArticleElement.innerHTML += journalHTMLRepresentation
+        for (const journalObject of journalObjectsArray){
+            const journalHTMLRepresentation = HTMLComponent.journalEntryConverter(journalObject)
+            const journalArticleElement = document.querySelector(".entryLog")
+            journalArticleElement.innerHTML += journalHTMLRepresentation
+        }
+    },
+
+    showMoodsRadioButtons (MoodObjectsArray) {
+        console.log(MoodObjectsArray)
+        // document.querySelector(".journalMood").innerHTML = ""
+        for (const moodObject of MoodObjectsArray){
+            const moodRadioButtonHTMLRepresentation = HTMLComponent.moodRadioButtons(moodObject)
+            const moodsRadioButtonFieldset = document.querySelector("#journalMood")
+            moodsRadioButtonFieldset.innerHTML += moodRadioButtonHTMLRepresentation
+        }
+
     }
-}
+
 }
 
 export default Render

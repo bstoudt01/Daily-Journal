@@ -5,17 +5,24 @@
 // the paramater journalEntry is actually a single journalobject (w. the correct number of paramaters) being passed through a journal list generatior
 const HTMLComponent = {
     journalEntryConverter (journalEntry) {
-    const journalHTMLRepresentation = `<div class="journalEntryContainer">
-    <section class = "entryLog__date">Date: ${journalEntry.date}</section>
-    <section class = "entryLog__title">Concepts Covered: ${journalEntry.title}</section>
-    <section class = "entryLog__entry">Journal Entry: ${journalEntry.entry}</section>
-    <section class = "entryLog__mood">Mood: ${journalEntry.journalMood.mood}</section>
-    <button id="editEntry--${journalEntry.id}">Edit Entry</button>
-    <button id="deleteEntry--${journalEntry.id}">Delete Entry</button>
-   </div>
-   </article> `
+    const journalHTMLRepresentation = `
+    <div class="journalEntryContainer">
+        <section class = "entryLog__date">Date: ${journalEntry.date}</section>
+        <section class = "entryLog__title">Concepts Covered: ${journalEntry.title}</section>
+        <section class = "entryLog__entry">Journal Entry: ${journalEntry.entry}</section>
+        <section class = "entryLog__mood">Mood: ${journalEntry.journalMood.mood}</section>
+        <button id="editEntry--${journalEntry.id}">Edit Entry</button>
+        <button id="deleteEntry--${journalEntry.id}">Delete Entry</button>
+   </div>`
        // Create your own HTML structure for a journal entry
        return journalHTMLRepresentation
+   },
+   moodRadioButtons (radioButton) {
+       const moodButtonHTMLRepresentation = `
+           <option value="${radioButton.id}">${radioButton.mood}</option>
+           `
+
+       return moodButtonHTMLRepresentation
    }
 }
 

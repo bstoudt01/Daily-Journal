@@ -48,7 +48,12 @@ const API = {
         	body: JSON.stringify(updatedEntryObj)
 		})
     },
-    //get request without expand to trial with search bar.... code is breaking
+    getJournalMoods: () => {
+        return fetch(`${url}/journalMoods`)
+            .then(response => response.json()) //returns automatically since its on the same line without saying "return"
+            .then(response => response) //returns automatically since its on 1 line
+    },
+    //get request trial with search bar without "expand to the mood" .... code is breaking
     getAllJournalEntries: () => {
         return fetch(`${url}/journalEntries`)
             .then(response => response.json()) //returns automatically since its on the same line without saying "return"
